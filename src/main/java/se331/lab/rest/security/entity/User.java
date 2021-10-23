@@ -53,6 +53,10 @@ public class User {
     @NotNull
     private  int age;
 
+    @Column(name = "HOMETOWN", length = 150)
+    @NotNull
+    private String hometown;
+
     @Column(name = "ENABLED")
     @NotNull
     private Boolean enabled;
