@@ -13,8 +13,10 @@ import se331.lab.rest.repository.OrganizerRepository;
 import se331.lab.rest.repository.ParticipantRepository;
 import se331.lab.rest.security.entity.Authority;
 import se331.lab.rest.security.entity.AuthorityName;
+import se331.lab.rest.security.entity.Doctor;
 import se331.lab.rest.security.entity.User;
 import se331.lab.rest.security.repository.AuthorityRepository;
+import se331.lab.rest.security.repository.DoctorRepository;
 import se331.lab.rest.security.repository.UserRepository;
 
 import javax.transaction.Transactional;
@@ -34,6 +36,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     AuthorityRepository authorityRepository;
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    DoctorRepository doctorRepository;
 
     @Override
     @Transactional
@@ -101,10 +106,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     }
 
     User user1, user2, user3;
-
+    Doctor doctor1;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
+        Authority authDoctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();
         Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
         user1 = User.builder()
                 .username("admin")
@@ -134,7 +140,17 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .enabled(false)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
+        doctor1 = Doctor.builder()
+                .username("doc")
+                .password(encoder.encode("doc"))
+                .firstname("doc")
+                .lastname("doc")
+                .email("doc@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
         authorityRepository.save(authUser);
+        authorityRepository.save(authDoctor);
         authorityRepository.save(authAdmin);
         user1.getAuthorities().add(authUser);
         user1.getAuthorities().add(authAdmin);
@@ -143,6 +159,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);
+
+        doctor1.getAuthorities().add(authDoctor);
+        doctorRepository.save(doctor1);
+
 
     }
 }
