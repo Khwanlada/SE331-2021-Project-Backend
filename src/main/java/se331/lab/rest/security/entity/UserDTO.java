@@ -19,6 +19,7 @@ public class UserDTO {
     String firstname;
     String lastname;
     String email;
+    int age;
     Boolean enabled;
     Date lastPasswordResetDate;
     OrganizerAuthDTO organizer;

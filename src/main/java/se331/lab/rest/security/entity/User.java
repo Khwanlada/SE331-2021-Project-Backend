@@ -49,6 +49,10 @@ public class User {
     @NotNull
     private String email;
 
+    @Column(name = "Age" , length = 3)
+    @NotNull
+    private  int age;
+
     @Column(name = "ENABLED")
     @NotNull
     private Boolean enabled;
