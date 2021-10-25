@@ -109,9 +109,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     Doctor doctor1;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
-        Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
-        Authority authDoctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();
-        Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
+        Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build(); //ROLE ID = 1
+        Authority authDoctor = Authority.builder().name(AuthorityName.ROLE_DOCTOR).build();//ROLE ID = 2
+        Authority authAdmin = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();//ROLE ID = 3
         user1 = User.builder()
                 .username("admin")
                 .password(encoder.encode("admin"))
