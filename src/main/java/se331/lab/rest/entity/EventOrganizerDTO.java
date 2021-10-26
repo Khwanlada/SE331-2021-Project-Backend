@@ -12,4 +12,17 @@ import lombok.NoArgsConstructor;
 public class EventOrganizerDTO {
     Long id;
     String name;
+    String surname;
+    String age;
+    String hometown;
+    String status;
+    String type;
+    String type2;
+
+    String category;
+    String title;
+    String description;
+    String location;
+    String date;
+    String time;
 }

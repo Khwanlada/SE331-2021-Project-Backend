@@ -14,8 +14,8 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
-
     Long id;
+
     String name;
     String surname;
     String age;
@@ -24,8 +24,13 @@ public class Event {
     String type;
     String type2;
 
+    String category;
+    String title;
+    String description;
+    String location;
+    String date;
+    String time;
     Boolean petAllowed;
-
     @ManyToOne
     Organizer organizer;
     @ManyToMany(mappedBy = "eventHistory")

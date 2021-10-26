@@ -22,6 +22,13 @@ public class EventDTO {
     String type;
     String type2;
 
+    String category;
+    String title;
+    String description;
+    String location;
+    String date;
+    String time;
+
     Boolean petAllowed;
     EventOrganizerDTO organizer;
     List<String> imageUrls;
