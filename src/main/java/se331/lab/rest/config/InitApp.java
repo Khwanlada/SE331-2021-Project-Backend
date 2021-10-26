@@ -201,6 +201,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user2.getAuthorities().add(authUser);
         user3.getAuthorities().add(authUser);
         user4.getAuthorities().add(authUser);
+        user4.getAuthorities().add(authDoctor);
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);
