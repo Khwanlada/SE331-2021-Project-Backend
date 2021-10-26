@@ -43,13 +43,15 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Override
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        Organizer org1, org2, org3;
+        Organizer org1, org2, org3, org4;
         org1 = organizerRepository.save(Organizer.builder()
                 .name("CAMT").build());
         org2 = organizerRepository.save(Organizer.builder()
                 .name("CMU").build());
         org3 = organizerRepository.save(Organizer.builder()
                 .name("ChiangMai").build());
+        org4 = organizerRepository.save(Organizer.builder()
+                .name("Bear").build());
         Event tempEvent;
         tempEvent = eventRepository.save(Event.builder()
                 .name("Khwanlada")
@@ -134,10 +136,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user2.setOrganizer(org2);
         org3.setUser(user3);
         user3.setOrganizer(org3);
-
+        org4.setUser(user4);
+        user4.setOrganizer(org4);
     }
 
-    User user1, user2, user3;
+    User user1, user2, user3, user4;
     Doctor doctor1;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -172,6 +175,15 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .enabled(false)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
+        user4 = User.builder()
+                .username("bear")
+                .password(encoder.encode("bear"))
+                .firstname("we are")
+                .lastname("bear")
+                .email("bear@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2021, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
         doctor1 = Doctor.builder()
                 .username("doc")
                 .password(encoder.encode("doc"))
@@ -188,9 +200,11 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         user1.getAuthorities().add(authAdmin);
         user2.getAuthorities().add(authUser);
         user3.getAuthorities().add(authUser);
+        user4.getAuthorities().add(authUser);
         userRepository.save(user1);
         userRepository.save(user2);
         userRepository.save(user3);
+        userRepository.save(user4);
 
         doctor1.getAuthorities().add(authDoctor);
         doctorRepository.save(doctor1);
