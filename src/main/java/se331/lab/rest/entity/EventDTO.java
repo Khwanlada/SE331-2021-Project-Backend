@@ -14,12 +14,14 @@ import java.util.List;
 @AllArgsConstructor
 public class EventDTO {
     Long id;
-    String category;
-    String title;
-    String description;
-    String location;
-    String date;
-    String time;
+    String name;
+    String surname;
+    String age;
+    String hometown;
+    String status;
+    String type;
+    String type2;
+
     Boolean petAllowed;
     EventOrganizerDTO organizer;
     List<String> imageUrls;
