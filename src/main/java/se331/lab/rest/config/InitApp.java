@@ -129,6 +129,87 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
         tempEvent.setOrganizer(org3);
         org3.getOwnEvents().add(tempEvent);
+
+        tempEvent = eventRepository.save(Event.builder()
+                .name("Kim")
+                .surname("Jisoo")
+                .age("28")
+                .hometown("Bangkok")
+                .status("Vaccined")
+                .type("Moderna")
+                .type2("None")
+
+                .category("Cultural")
+                .title("Songkran")
+                .description("Let's Play Water")
+                .location("Chiang Mai Moat")
+                .date("13th April")
+                .time("10.00am - 6.00 pm.")
+                .petAllowed(true)
+                .build());
+        tempEvent.setOrganizer(org3);
+        org3.getOwnEvents().add(tempEvent);
+
+        tempEvent = eventRepository.save(Event.builder()
+                .name("Sophia")
+                .surname("Darlene")
+                .age("23")
+                .hometown("Bangkok")
+                .status("Vaccined")
+                .type("sinopharm")
+                .type2("sinopharm")
+
+                .category("Cultural")
+                .title("Songkran")
+                .description("Let's Play Water")
+                .location("Chiang Mai Moat")
+                .date("13th April")
+                .time("10.00am - 6.00 pm.")
+                .petAllowed(true)
+                .build());
+        tempEvent.setOrganizer(org3);
+        org3.getOwnEvents().add(tempEvent);
+
+        tempEvent = eventRepository.save(Event.builder()
+                .name("Chloe")
+                .surname("Jamille")
+                .age("12")
+                .hometown("Lamphun")
+                .status("Vaccined")
+                .type("Pfizer")
+                .type2("None")
+
+                .category("Cultural")
+                .title("Loy Krathong")
+                .description("A time for Krathong")
+                .location("Ping River")
+                .date("21th Nov")
+                .time("8.00-10.00 pm.")
+                .petAllowed(false)
+                .build());
+        tempEvent.setOrganizer(org2);
+        org2.getOwnEvents().add(tempEvent);
+
+        tempEvent = eventRepository.save(Event.builder()
+                .name("Violet")
+                .surname("Jamille")
+                .age("22")
+                .hometown("Chiang Mai")
+                .status("Vaccined")
+                .type("Astrazeneca")
+                .type2("None")
+
+                .category("Cultural")
+                .title("Loy Krathong")
+                .description("A time for Krathong")
+                .location("Ping River")
+                .date("21th Nov")
+                .time("8.00-10.00 pm.")
+                .petAllowed(false)
+                .build());
+        tempEvent.setOrganizer(org2);
+        org2.getOwnEvents().add(tempEvent);
+
         addUser();
         org1.setUser(user1);
         user1.setOrganizer(org1);
